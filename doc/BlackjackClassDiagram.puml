@@ -58,6 +58,7 @@ BlackjackPlayer <-- Hand
 
 Game <|-- BlackjackGame
 
+
 note left of BlackjackHand: A BlackjackHand has two states: Hard aces and soft aces.
 
 note left of BlackjackTable: A Table that handles association\nbetween Bet (s) and specific Hands
@@ -72,13 +73,17 @@ note left of Bet : Every Bet has an Outcome
 note top of Card_Factory : Focus classes contain primary\nlogic and support other\nclasses.
 
 abstract class Game {
-WagerEvent wager
+GameEvent wager
 Table table
 Player player
 Game(wager, table) «constructor»
 cycle(player)
 }
 
+class BlackjackGame {
+
+
+}
 
 abstract class Player {
 int stake
