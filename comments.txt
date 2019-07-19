@@ -1,0 +1,52 @@
+https://visualgit.readthedocs.io/en/latest/pages/naming_convention.htmlComments goes here...
+
+Top Four Heirchical Classes:
+1. BlackjackHand
+
+    Overview of a Blackjack Hand, The Player starts out 
+    with two cards
+
+    FIELDS:
+    
+    "The hand has a reference to the instance of player that owns it"
+    BlackjackHand.Player
+
+    "The collection of individual Cards of this hand
+    BlackjackHand.Cards
+
+    "Instance of HandHardScore (hand.hard.score() produces the
+    hard score of the cards in the hand)"
+    Hand.hard
+    
+    "Instance of HandSoftScore (hand.soft.score() produces the
+    soft score of the cards in the hand)"
+    Hand.soft
+
+    METHODS:
+
+    Hand.add
+
+2. GameEvent
+
+    The player can only place one of four basic bets. 
+
+    • The “Ante” bet that starts play. This is assmed to be 1:1 unless game conditions change this to 3:2 or a push. This is the essential Outcome for the player’s primary Bet. 
+
+    • The “Insurance” and “Event Money” bets. One of these may be active after the ﬁrst cards are dealt. 
+
+    • For the insurance Outcome to be active, the dealer must be showing an Ace and the player’s hand is not 21. For even money Outcome to be active, the dealer must be showing an Ace and the player’s hand is 21.
+
+    • The “Double Down” bet. This is generally oﬀered at any time. It can be looked at as an an additional amount added to the “ante” bet and a modiﬁcation to game play.
+
+3. BlackjackTable
+4. BlackjackGame
+
+
+
+
+
+
+
+
+
+
