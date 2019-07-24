@@ -1,5 +1,5 @@
 from hand import Hand
-from player import BlackjackPlayer
+from player import BlackjackPlayer, BlackjackHand
 
 
 class Table:
@@ -9,7 +9,7 @@ class Table:
 class BlackjackTable(Table):
     def __init__(self):
         self.player = BlackjackPlayer
-        self.house = None
+        self.house = BlackjackHand
 
     def set_player(self, player):
         self.player = player

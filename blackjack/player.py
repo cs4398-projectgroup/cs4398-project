@@ -1,11 +1,10 @@
 import sys
-from abc import ABC, abstractmethod
 
 from hand import BlackjackHand
 from deck import Deck
 
 
-class Player(ABC):
+class Player:
     """
     Abstract base class for all players at a table
 
@@ -54,3 +53,18 @@ class BlackjackPlayer(Player):
 
     def win(self):
         print(self.name, "wins")
+
+
+class BlackjackHouse(Player):
+    def __init__(self, hand=None):
+        self.hand = BlackjackHand("House")
+
+    def set_hand(self, new_hand):
+        self.hand = new_hand
+
+    def house_hit(self, hand) -> bool:
+        if self.hand.hard_total() < 17:
+            return True
+        else:
+            return False
+
