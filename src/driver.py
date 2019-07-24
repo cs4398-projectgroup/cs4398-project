@@ -1,7 +1,6 @@
 import pygame
 import time
 import config
-import unittest
 
 # pygame constructors
 # displays game window, flag pygame.SCALED scales reselution based on display
@@ -47,8 +46,8 @@ def user_display(text):
     game_loop()
 
 
-def elf_phrase():
-    user_display('ELF IS HERE')
+def elf_phrase(phrase):
+    user_display(phrase)
 
 
 # button functionality with message, coordinates, width/height, active/inactive color
@@ -118,7 +117,8 @@ def game_loop():
         # displays elf in loop and displays elf phrase
         elf(x, y)
         if left_key == 1:
-            elf_phrase()
+            say = "Hi im an elf"
+            elf_phrase(say)
 
         # allows to specific paramameter to update or the entire window if blank
         # pygame.display.flip() always just updates the entire surface
