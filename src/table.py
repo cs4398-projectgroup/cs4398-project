@@ -1,4 +1,5 @@
 from bjhand import BJHand
 
-class Table():
+
+class Table:
     None
