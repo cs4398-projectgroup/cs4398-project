@@ -14,7 +14,7 @@ class BlackjackGame(Game):
         self.table = table
 
     class BlackjackGameLoop:
-        def __init(self):
+        def __init_subclass__(cls, **kwargs):
             pass
 
         def check_for_bust(self):
@@ -25,4 +25,3 @@ class BlackjackGame(Game):
 
         def run(self):
             pass
-        
