@@ -1,6 +1,6 @@
 import unittest
 import pygame
-import driver
+from View import driver
 
 
 class TestDriver(unittest.TestCase):

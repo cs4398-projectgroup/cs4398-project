@@ -1,6 +1,8 @@
 import pygame
 import time
-import config
+from View import config
+from View import button
+
 
 # pygame constructors
 # displays game window, flag pygame.SCALED scales reselution based on display
@@ -38,7 +40,7 @@ def text_objects(text, font):
 def user_display(text):
     large_text = pygame.font.Font('freesansbold.ttf', 115)
     text_surf, text_rect = text_objects(text, large_text)
-    text_rect.center = ((config.disp_width/2), (config.disp_height/5))
+    text_rect.center = ((config.disp_width / 2), (config.disp_height / 5))
     gameDisplay.blit(text_surf, text_rect)
     pygame.display.update()
     # starts game loop over and resets
@@ -81,8 +83,8 @@ def game_menu():
         gameDisplay.blit(text_surf, text_rect)
 
         # button functionality
-        button("PLAY", 550, 350, 100, 50, config.white, config.dark_red, game_loop)
-        button("QUIT", 550, 425, 100, 50, config.white, config.dark_red, quit_game)
+        button.intro_button("PLAY", 550, 350, 100, 50, config.white, config.dark_red, game_loop)
+        button.intro_button("QUIT", 550, 425, 100, 50, config.white, config.dark_red, quit_game)
 
         ace_show((config.disp_width / 2.9), 40)
         pygame.display.update()

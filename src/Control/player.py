@@ -1,5 +1,4 @@
-from bjhand import BJHand 
-from table import Table
+from View.table import Table
 
 class Player():
     stake
