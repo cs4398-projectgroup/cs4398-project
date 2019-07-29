@@ -1,4 +1,5 @@
 import pygame
+import os
 #  File Configurations including Globals
 
 # game control/testing
@@ -22,14 +23,17 @@ disp_width = 1200
 disp_height = 600
 
 # pygame constructors
+pygame.init()
 small_text = pygame.font.Font("freesansbold.ttf", 20)
 gameDisplay = pygame.display.set_mode((disp_width, disp_height))
 pygame.display.set_caption('BlackJackTrainerAlfa')
 clock = pygame.time.Clock()
 
-# images
-elfPic = pygame.image.load('/images/Lore-race-Dunmer.png')
-aceClub = pygame.image.load('ace_club.png')
-aceDiamond = pygame.image.load('ace_diamond.png')
-aceHeart = pygame.image.load('ace_hearts.png')
-aceSpade = pygame.image.load('ace_spade.png')
+# loads images in test folder
+# 2d list with two variables, pygame image and image name
+path = os.getcwd()+"/View/images/test_folder"
+print(path)
+demo_images = []
+for image in os.listdir(path):
+    demo_images.append([pygame.image.load(path + '/' + image).convert_alpha(), image])
+

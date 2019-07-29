@@ -31,7 +31,7 @@ class Button:
                 # POSSIBLE TEST CASE HERE
                 self.action()
         else:
-            pygame.draw.rect(config.gameDisplay, ic, (self.x, self.y, self.w, self.h))
+            pygame.draw.rect(config.gameDisplay, self.ic, (self.x, self.y, self.w, self.h))
         small_text = pygame.font.Font("freesansbold.ttf", 20)
         text_surf, text_rect = self.text_objects(self.msg, small_text)
         #                     center of x     center of y

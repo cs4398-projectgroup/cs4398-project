@@ -1,1 +1,2 @@
-class BJHand():
+class Hand:
+    None
