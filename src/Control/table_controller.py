@@ -1,27 +1,31 @@
+from Model import table
 from Control.hand import Hand
 from Control.player import BlackjackPlayer, BlackjackHand
 
 
-class Table:
+class TableController:
     pass
 
 
-class BlackjackTable(Table):
+class BlackjackTableController(TableController):
+    """
+            Controller for a table object. The class retrieves the tables
+            response to the view
+
+            Args:
+
+            Returns:
+                A table's response to the user.
+
+            Raises:
+                KeyError: exceptions it raises
+        """
     def __init__(self):
-        self.player = BlackjackPlayer
-        self.house = BlackjackHand
+        self.create_table()
 
-    def set_player(self, player):
-        self.player = player
-
-    def set_house(self, house):
-        self.house = house
-
-    def deal_player_hand(self):
-        pass
-
-    def deal_house_hand(self):
-        pass
+    def create_table(self):
+        current_table = table
+        return current_table
 
     def check_bust(self):
         pass
