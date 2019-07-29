@@ -1,7 +1,6 @@
 import unittest
-import pytest
 
-from Control.deck import Deck
+from Model.deck import Deck
 
 
 class DeckTest(unittest.TestCase):

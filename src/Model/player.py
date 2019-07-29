@@ -1,7 +1,4 @@
-import sys
-
-from Control.hand import BlackjackHand
-from Control.deck import Deck
+from Model.hand import BlackjackHand
 
 
 class Player:
