@@ -1,6 +1,4 @@
 from Model import table
-from Control.hand import Hand
-from Control.player import BlackjackPlayer, BlackjackHand
 
 
 class TableController:

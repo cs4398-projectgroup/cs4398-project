@@ -1,5 +1,4 @@
-from Control.hand import Hand
-from Control.player import BlackjackPlayer, BlackjackHand
+from Model.player import BlackjackPlayer, BlackjackHand
 
 
 class Table:
