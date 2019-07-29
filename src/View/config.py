@@ -28,7 +28,7 @@ disp_height = 600
 gameDisplay = pygame.display.set_mode((config.disp_width, config.disp_height))
 pygame.display.set_caption('BlackJackTrainerAlfa')
 clock = pygame.time.Clock()
-# images
+# res
 elfPic = pygame.image.load('Lore-race-Dunmer.png')
 aceClub = pygame.image.load('ace_club.png')
 aceDiamond = pygame.image.load('ace_diamond.png')

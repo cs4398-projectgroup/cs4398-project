@@ -1,44 +1,38 @@
-import random
+from random import shuffle
 
-from Model.card import Card
+from Control.card_factory import CardFactory
 
-class Deck():
 
+class Deck:
+    """
+        Class for a standard 52 deck of playing cards. Defines
+        A deck so the internal collection is a list object
+
+        Args:
+
+        Returns:
+            The top card of the deck.
+
+        Raises:
+            KeyError: exceptions it raises
+    """
 
     def __init__(self):
-        self.cards = []
-        for suit in range(4):
-            for rank in range(1, 14):
-                card = Card(suit, rank)
-                self.cards.append(card)
+        card_factory = CardFactory()
+        self._cards = [
+            card_factory.create_card(rank + 1, suit)
+            for rank in range(0, 13)
+            for suit in range(4)
+        ]
+        shuffle(self._cards)
 
-    def __str__(self):
-        res = []
-        for card in self.cards:
-            res.append(str(card))
-        return '\n'.join(res)
-    
-    def add_card(self, card):
-        """Adds a card to the deck."""
-        self.cards.append(card)
+    def __len__(self):
+        return len(self._cards)
 
-    def remove_card(self, card):
-        """Removes a card from the deck."""
-        self.cards.remove(card)
+    def __iter__(self):
+        return iter(self._cards)
 
-    def pop_card(self, i=-1):
-        """Removes and returns a card from the deck.
-
-        i: index of the card to pop; by default, pops the last card.
-        """
-        return self.cards.pop(i)
-
-    def shuffle(self):
-        """Shuffles the cards in this deck."""
-        random.shuffle(self.cards)
-
-    def sort(self):
-        """Sorts the cards in ascending order."""
-        self.cards.sort()
-
-    def get_cards():
+    def draw(self, amount: int):
+        if amount == 1:
+            return self._cards.pop()
+        return [self._cards.pop() for cards in range(0, amount)]
