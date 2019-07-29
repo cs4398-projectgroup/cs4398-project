@@ -83,8 +83,10 @@ def game_menu():
         gameDisplay.blit(text_surf, text_rect)
 
         # button functionality
-        button.intro_button("PLAY", 550, 350, 100, 50, config.white, config.dark_red, game_loop)
-        button.intro_button("QUIT", 550, 425, 100, 50, config.white, config.dark_red, quit_game)
+        # button.intro_button("PLAY", 550, 350, 100, 50, config.white, config.dark_red, game_loop)
+        # button.intro_button("QUIT", 550, 425, 100, 50, config.white, config.dark_red, quit_game)
+        button1 = button.Button("PLAY", 550, 350, 100, 50, config.white, config.dark_red, game_loop)
+        button1.intro_button()
 
         ace_show((config.disp_width / 2.9), 40)
         pygame.display.update()

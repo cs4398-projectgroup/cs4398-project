@@ -14,23 +14,26 @@ class Button:
         self.ic = ic
         self.action = action
 
-    def text_objects(self, text, font):
+    # a static method is a method bound to the class not the object of the class
+    # cannot modify the class state
+    @staticmethod
+    def text_objects(text, font):
         text_surface = font.render(text, True, config.black)
         return text_surface, text_surface.get_rect()
 
     # button functionality with message, coordinates, width/height, active/inactive color
-    def intro_button(self, msg, x, y, w, h, ac, ic, action=None):
+    def intro_button(self):
         mouse = pygame.mouse.get_pos()
         click = pygame.mouse.get_pressed()
-        if x + w > mouse[0] > x and y + h > mouse[1] > y:
-            pygame.draw.rect(gameDisplay, ac, (x, y, w, h))
-            if click[0] == 1 and action:
-                #POSSIBLE TEST CASE HERE
-                action()
+        if self.x + self.w > mouse[0] > self.x and self.y + self.h > mouse[1] > self.y:
+            pygame.draw.rect(config.gameDisplay, self.ac, (self.x, self.y, self.w, self.h))
+            if click[0] == 1 and self.action:
+                # POSSIBLE TEST CASE HERE
+                self.action()
         else:
-            pygame.draw.rect(gameDisplay, ic, (x, y, w, h))
+            pygame.draw.rect(config.gameDisplay, ic, (self.x, self.y, self.w, self.h))
         small_text = pygame.font.Font("freesansbold.ttf", 20)
-        text_surf, text_rect = text_objects(msg, config.small_text)
+        text_surf, text_rect = self.text_objects(self.msg, small_text)
         #                     center of x     center of y
-        text_rect.center = ((x + (w / 2)), (y + (h / 2)))
-        gameDisplay.blit(text_surf, text_rect)
+        text_rect.center = ((self.x + (self.w / 2)), (self.y + (self.h / 2)))
+        config.gameDisplay.blit(text_surf, text_rect)

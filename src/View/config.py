@@ -1,9 +1,6 @@
 import pygame
 #  File Configurations including Globals
 
-
-
-
 # game control/testing
 crashed = False
 game_exit = False
@@ -24,17 +21,15 @@ dark_blue = (0, 0, 200)
 disp_width = 1200
 disp_height = 600
 
-#
-gameDisplay = pygame.display.set_mode((config.disp_width, config.disp_height))
+# pygame constructors
+small_text = pygame.font.Font("freesansbold.ttf", 20)
+gameDisplay = pygame.display.set_mode((disp_width, disp_height))
 pygame.display.set_caption('BlackJackTrainerAlfa')
 clock = pygame.time.Clock()
+
 # images
-elfPic = pygame.image.load('Lore-race-Dunmer.png')
+elfPic = pygame.image.load('/images/Lore-race-Dunmer.png')
 aceClub = pygame.image.load('ace_club.png')
 aceDiamond = pygame.image.load('ace_diamond.png')
 aceHeart = pygame.image.load('ace_hearts.png')
 aceSpade = pygame.image.load('ace_spade.png')
-
-# pygame constructors
-
-small_text = pygame.font.Font("freesansbold.ttf", 20)
