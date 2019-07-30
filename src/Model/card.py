@@ -1,97 +1,49 @@
+"""File: card.py"""
+import os
+
 class Card:
-    """
-    Abstract base class for all cards in any deck
+    """This Class Card creates a card object with suit and rank"""
+    SUITS = ('Spades', 'Hearts', 'Diamonds', 'Clubs')
+    RANKS = (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13)
+    THIS_FOLDER = os.path.dirname(os.path.abspath(__file__))
+    BACK_OF_CARD_FILE_NAME = os.path.join(THIS_FOLDER, 'DECK/b.gif')
 
-    Attributes:
-        card_ranks (str): The 13 different cards contained in each suit
-        card_suits (str): The four suits offered in a standard deck of playing cards
-
-    Returns:
-        description of return
-
-    Raises:
-        KeyError: exceptions it raises
-    """
-
-    card_suits = ["♣", "♢", "♡", "♠"]
-    card_ranks = [
-        None,
-        "Ace",
-        "2",
-        "3",
-        "4",
-        "5",
-        "6",
-        "7",
-        "8",
-        "9",
-        "10",
-        "Jack",
-        "Queen",
-        "King",
-    ]
 
     def __init__(self, rank, suit):
+        """Creates a card with given rank and suit"""
+
         self.rank = rank
         self.suit = suit
-        self.name = f"{Card.card_ranks[self.rank]} of {Card.card_suits[self.suit]}"
-        self.visible = True
+        """The images for cards are saved in path res/DECK/
+        For example: Ace of clubs is in res/DECK/1c.gif
+        A number for rank, and a lower case initial for suits"""
 
-    def __str__(self) -> str:
-        return self.name if self.visible else "<hidden>"
+        self.filename = 'DECK/' + str(rank) + suit[0].lower() + '.gif'
+        self.my_file = os.path.join(Card.THIS_FOLDER, self.filename)
 
-    def __eq__(self, other) -> bool:
-        """
-
-        Args:
-            other (Card):
-        """
-        return other.rank == self.rank and self.suit == other.suit
-
-
-class BlackjackCard(Card):
-    """
-    Super class for the cards in a Blackjack deck
-
-    Args:
-        rank (int):
-        suit (int):
-
-    Returns:
-        description of return
-
-    Raises:
-        KeyError: exceptions it raises
-    """
-
-    def __init__(self, rank, suit):
-        super().__init__(rank, suit)
+        self.faceUp = False
 
     def __str__(self):
-        return super(BlackjackCard, self).__str__()
+        """Returns a string representation of a card"""
+        if self.rank == 1:
+            rank = 'Ace'
+        elif self.rank == 11:
+            rank = 'Jack'
+        elif self.rank == 12:
+            rank = 'Queen'
+        elif self.rank == 13:
+            rank = 'King'
+        else:
+            rank = self.rank
+        return str(rank) + ' of ' + self.suit
 
+    def get_filename(self):
+        """Only lets you get the file name if the card is face up"""
+        if self.faceUp:
+            return self.my_file
+        else:
+            return Card.BACK_OF_CARD_FILE_NAME
 
-class NumberCard(BlackjackCard):
-    def __init__(self, rank, suit):
-        super().__init__(rank, suit)
-        self.soft_score = self.hard_score = rank
-
-
-class AceCard(BlackjackCard):
-    def __init__(self, rank, suit):
-        super().__init__(rank, suit)
-        self.soft_score, self.hard_score = 1, 11
-
-    @staticmethod
-    def soft_score() -> int:
-        return 1
-
-    @staticmethod
-    def hard_score() -> int:
-        return 11
-
-
-class FaceCard(BlackjackCard):
-    def __init__(self, rank, suit):
-        super().__init__(rank, suit)
-        self.soft_score = self.hard_score = 10
+    def turn(self):
+        """Turns the card"""
+        self.faceUp = not self.faceUp

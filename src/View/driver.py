@@ -11,7 +11,6 @@ def quit_game():
 # passes two objects that tell menu buttons where to go
 game_start = Table().game_loop
 menu_start = Menu(game_start, quit_game)
-
 menu_start.game_menu()
 
 pygame.quit()
