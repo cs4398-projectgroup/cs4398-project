@@ -2,11 +2,12 @@
 import pygame
 import time
 from View import config
+from soundeffects import Sound
 
 
 class Table:
 
-    # displays elf
+    # displays el
     @staticmethod
     def elf(x, y):
         config.gameDisplay.blit(config.demo_images[2][0], (x, y))
@@ -30,6 +31,10 @@ class Table:
         x = (config.disp_width * 0.4)
         y = (config.disp_height * 0.6)
         left_key = False
+
+        # Sound Effect of Dealing 4 cards
+        sound = Sound()
+        sound.get_sound_effect('Deal4')
 
         while not config.game_exit:
             # event loop / NOT logic loop
