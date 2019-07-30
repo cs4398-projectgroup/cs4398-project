@@ -1,6 +1,6 @@
-from src.Model.deck import Deck
-from src.Control.dealer import Dealer
-from src.Control.player import Player
+from Model.deck import Deck
+from Control.dealer import Dealer
+from Control.player import Player
 
 
 class BlackjackController(object):

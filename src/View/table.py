@@ -3,9 +3,14 @@ import pygame
 import time
 from View import config
 from View.soundeffects import Sound
-
+from Control.blackjackController import BlackjackController
 
 class Table:
+
+    def __init__(self):
+        model = BlackjackController()
+        self.dealers_hand = model.get_dealers_hand()
+        self.players_hand = model.get_players_hand()
 
     # displays elf
     @staticmethod
@@ -26,6 +31,7 @@ class Table:
         pygame.display.update()
         # starts game loop over and resets
         time.sleep(1)
+
 
     def game_loop(self):
         x = (config.disp_width * 0.4)
@@ -52,13 +58,38 @@ class Table:
             config.gameDisplay.fill(config.board_color)
 
             # displays elf in loop and displays elf phrase
-            self.elf(x, y)
-            if left_key == 1:
-                say = "Hi im an elf"
-                self.user_display(self, say)
+            # self.elf(x, y)
+            # if left_key == 1:
+            #     say = "Hi im an elf"
+            #     self.user_display(self, say)
 
             # allows to specific paramameter to update or the entire window if blank
             # pygame.display.flip() always just updates the entire surface
             pygame.display.update()
+            self.show_dealers_hand()
+            pygame.display.flip()
+            self.show_players_hand()
+            pygame.display.flip()
+
             config.clock.tick(30)
             left_key = False
+
+    def show_dealers_hand(self):
+        k = 1
+        for i in range(len(self.dealers_hand)):
+            right = 500
+            down = 0
+            card = pygame.image.load(str(self.dealers_hand[i].get_filename()))
+            config.gameDisplay.blit(card, (right + k, down))
+            k += 100
+            pygame.display.flip()
+
+    def show_players_hand(self):
+        k = 1
+        for i in range(len(self.players_hand)):
+            right = 500
+            down = 400
+            card = pygame.image.load(str(self.players_hand[i].get_filename()))
+            config.gameDisplay.blit(card, (right + k, down))
+            k += 100
+            pygame.display.flip()

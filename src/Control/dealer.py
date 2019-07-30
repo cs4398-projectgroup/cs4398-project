@@ -1,4 +1,4 @@
-from src.controller.player import Player
+from Control.player import Player
 
 
 class Dealer(Player):

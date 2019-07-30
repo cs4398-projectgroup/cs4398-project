@@ -1,4 +1,4 @@
-from src.Model.card import Card
+from Model.card import Card
 import random
 
 
