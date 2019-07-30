@@ -31,7 +31,7 @@ clock = pygame.time.Clock()
 
 # loads images in test folder
 # 2d list with two variables, pygame image and image name
-path = os.getcwd()+"/View/images/test_folder"
+path = os.getcwd()+"/images/test_folder"
 print(path)
 demo_images = []
 for image in os.listdir(path):

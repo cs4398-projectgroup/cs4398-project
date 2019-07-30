@@ -2,14 +2,20 @@
 import pygame
 import time
 from View import config
+from View.button import Button
+
 
 
 class Table:
 
+
+    @staticmethod
+    def display_card(x, y):
+        config.gameDisplay.blit(config.demo_images[1][0], (x, y))
     # displays elf
     @staticmethod
     def elf(x, y):
-        config.gameDisplay.blit(config.demo_images[2][0], (x, y))
+        config.gameDisplay.blit(config.demo_images[4][0], (x, y))
 
     @staticmethod
     def text_objects(text, font):
@@ -43,8 +49,21 @@ class Table:
                     if event.key == pygame.K_LEFT:
                         left_key = True
 
+
             # Background Color
             config.gameDisplay.fill(config.board_color)
+
+            #buttons for hit,stand,new game, and quit game
+            hit_button = Button("HIT ME", 800, 550, 75, 30, config.green, config.dark_green,
+                                self.display_card((config.disp_width / 2.9), 40))
+            hit_button.game_button()
+            stand_button = Button("STAND", 890, 550,75,30, config.green, config.dark_green)
+            stand_button.game_button()
+            new_game_button = Button("NEW GAME",980, 550, 100,30, config.green, config.dark_blue)
+            new_game_button.game_button()
+            quit_button = Button("QUIT GAME", 1090, 550, 100, 30, config.green, config.dark_blue)
+            quit_button.game_button()
+
 
             # displays elf in loop and displays elf phrase
             self.elf(x, y)
