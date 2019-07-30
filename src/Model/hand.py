@@ -1,4 +1,4 @@
-from deck import Deck
+from Model.deck import Deck
 
 
 class Hand:

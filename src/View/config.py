@@ -1,4 +1,5 @@
 import pygame
+import platform
 import os
 #  File Configurations including Globals
 
@@ -31,7 +32,11 @@ clock = pygame.time.Clock()
 
 # loads images in test folder
 # 2d list with two variables, pygame image and image name
-path = os.getcwd()+"/View/images/test_folder"
+
+if platform.system() == 'Windows':
+    path = os.getcwd() + r"\images\test_folder"
+else: path = os.getcwd() + "/images/test_folder"
+
 print(path)
 demo_images = []
 for image in os.listdir(path):
