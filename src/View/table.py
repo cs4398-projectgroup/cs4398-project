@@ -2,12 +2,12 @@
 import pygame
 import time
 from View import config
-from soundeffects import Sound
+from View.soundeffects import Sound
 
 
 class Table:
 
-    # displays el
+    # displays elf
     @staticmethod
     def elf(x, y):
         config.gameDisplay.blit(config.demo_images[2][0], (x, y))
