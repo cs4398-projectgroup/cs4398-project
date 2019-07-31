@@ -5,6 +5,7 @@ from Control.player import Player
 
 class BlackjackController(object):
     """"Calculates and keeps track of the game, points, deck"""
+
     def __init__(self):
         self.currentDeck = Deck()
         self.currentDeck.shuffle()
@@ -44,9 +45,15 @@ class BlackjackController(object):
             elif player_score < dealer_score:
                 return "You lose!"
             elif player_score == dealer_score:
-                if self.currentPlayer.has_blackjack() and not self.currentDealer.has_blackjack():
+                if (
+                    self.currentPlayer.has_blackjack()
+                    and not self.currentDealer.has_blackjack()
+                ):
                     return "You have a BlackJack! You Win!"
-                elif not self.currentPlayer.has_blackjack() and self.currentDealer.has_blackjack():
+                elif (
+                    not self.currentPlayer.has_blackjack()
+                    and self.currentDealer.has_blackjack()
+                ):
                     return "Dealer has a BlackJack! You Lose!"
                 else:
                     return "It's a Tie!"

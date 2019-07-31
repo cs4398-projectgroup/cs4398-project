@@ -5,8 +5,8 @@ from View import config
 from View.soundeffects import Sound
 from Control.blackjack_controller import BlackjackController
 
-class Table:
 
+class Table:
     def __init__(self):
         model = BlackjackController()
         self.dealers_hand = model.get_dealers_hand()
@@ -24,7 +24,7 @@ class Table:
 
     @staticmethod
     def user_display(self, text):
-        large_text = pygame.font.Font('freesansbold.ttf', 115)
+        large_text = pygame.font.Font("freesansbold.ttf", 115)
         text_surf, text_rect = self.text_objects(text, large_text)
         text_rect.center = ((config.disp_width / 2), (config.disp_height / 5))
         config.gameDisplay.blit(text_surf, text_rect)
@@ -32,15 +32,14 @@ class Table:
         # starts game loop over and resets
         time.sleep(1)
 
-
     def game_loop(self):
-        x = (config.disp_width * 0.4)
-        y = (config.disp_height * 0.6)
+        x = config.disp_width * 0.4
+        y = config.disp_height * 0.6
         left_key = False
 
         # Sound Effect of Dealing 4 cards
         sound = Sound()
-        sound.get_sound_effect('Deal4')
+        sound.get_sound_effect("Deal4")
 
         while not config.game_exit:
             # event loop / NOT logic loop
@@ -65,11 +64,11 @@ class Table:
 
             # allows to specific paramameter to update or the entire window if blank
             # pygame.display.flip() always just updates the entire surface
-            pygame.display.update()
+            # pygame.display.update()
             self.show_dealers_hand()
-            pygame.display.flip()
+            # pygame.display.flip()
             self.show_players_hand()
-            pygame.display.flip()
+            pygame.display.update()
 
             config.clock.tick(30)
             left_key = False
@@ -82,7 +81,7 @@ class Table:
             card = pygame.image.load(str(self.dealers_hand[i].get_filename()))
             config.gameDisplay.blit(card, (right + k, down))
             k += 100
-            pygame.display.flip()
+            # pygame.display.flip()
 
     def show_players_hand(self):
         k = 1
@@ -92,4 +91,4 @@ class Table:
             card = pygame.image.load(str(self.players_hand[i].get_filename()))
             config.gameDisplay.blit(card, (right + k, down))
             k += 100
-            pygame.display.flip()
+            # pygame.display.flip()
