@@ -35,7 +35,8 @@ clock = pygame.time.Clock()
 
 if platform.system() == 'Windows':
     path = os.getcwd() + r"\images\test_folder"
-else: path = os.getcwd() + "/images/test_folder"
+else:
+    path = os.getcwd() + "/images/test_folder"
 
 print(path)
 demo_images = []

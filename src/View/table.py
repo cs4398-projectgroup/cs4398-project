@@ -3,7 +3,7 @@ import pygame
 import time
 from View import config
 from View.soundeffects import Sound
-from Control.blackjackController import BlackjackController
+from Control.blackjack_controller import BlackjackController
 
 class Table:
 
