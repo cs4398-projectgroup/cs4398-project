@@ -19,7 +19,7 @@ class Menu:
         config.gameDisplay.blit(config.demo_images[1][0], (x, y))
         config.gameDisplay.blit(config.demo_images[0][0], (x + 100, y))
         config.gameDisplay.blit(config.demo_images[3][0], (x + 200, y))
-        config.gameDisplay.blit(config.demo_images[4][0], (x + 300, y))
+        config.gameDisplay.blit(config.demo_images[2][0], (x + 300, y))
 
     def game_menu(self):
         config.menu = True
