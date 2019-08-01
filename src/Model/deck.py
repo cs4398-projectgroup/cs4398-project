@@ -16,7 +16,7 @@ class Deck(object):
         random.shuffle(self.deck)
 
     def deal(self):
-        if len(self.deck) == 0:
+        if len(self) == 0:
             return None
         else:
             return self.deck.pop(0)

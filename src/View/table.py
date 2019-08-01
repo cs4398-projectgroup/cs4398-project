@@ -9,9 +9,10 @@ from View.button import Button
 
 class Table:
     def __init__(self):
-        model = BlackjackController()
-        self.dealers_hand = model.get_dealers_hand()
-        self.players_hand = model.get_players_hand()
+        self.model = BlackjackController()
+        # self.dealers_hand = self.model.get_dealers_hand()
+        # self.players_hand = self.model.get_players_hand()
+        self.result = ''
 
     #@staticmethod
     #def display_card(x, y):
@@ -41,6 +42,7 @@ class Table:
         y = config.disp_height * 0.6
         left_key = False
 
+        config.crashed = False
         # Sound Effect of Dealing 4 cards
         sound = Sound()
         sound.get_sound_effect("Deal4")
@@ -60,50 +62,81 @@ class Table:
             # Background Color
             config.gameDisplay.fill(config.board_color)
 
-            #buttons for hit,stand,new game, and quit game
-            hit_button = Button("HIT ME", 800, 550, 75, 30, config.green, config.dark_green)
-                                #self.display_card((config.disp_width / 2.9), 40))
-            hit_button.game_button()
-            stand_button = Button("STAND", 890, 550,75,30, config.green, config.dark_green)
-            stand_button.game_button()
-            new_game_button = Button("NEW GAME",980, 550, 100,30, config.green, config.dark_blue)
-            new_game_button.game_button()
-            quit_button = Button("QUIT GAME", 1090, 550, 100, 30, config.green, config.dark_blue)
-            quit_button.game_button()
-
-            # displays elf in loop and displays elf phrase
-            # self.elf(x, y)
-            # if left_key == 1:
-            #     say = "Hi im an elf"
-            #     self.user_display(self, say)
+            # buttons for hit,stand,new game, and quit game
+            hit_button = Button("HIT ME", 100, 500, 100, 50, config.white, config.dark_red, self.hit)
+            hit_button.intro_button()
+            stand_button = Button("STAND", 300, 500, 100, 50, config.white, config.dark_red, self.stand)
+            stand_button.intro_button()
+            new_game_button = Button("NEW GAME", 800, 500, 150, 50, config.white, config.dark_red)
+            new_game_button.intro_button()
+            quit_button = Button("QUIT GAME", 1000, 500, 150, 50, config.white, config.dark_red, self.quit_game)
+            quit_button.intro_button()
 
             # allows to specific paramameter to update or the entire window if blank
             # pygame.display.flip() always just updates the entire surface
-            # pygame.display.update()
             self.show_dealers_hand()
-            # pygame.display.flip()
             self.show_players_hand()
             pygame.display.update()
-
             config.clock.tick(30)
             left_key = False
 
+        while not config.crashed:
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    config.game_exit = True
+                    config.crashed = True
+                    pygame.quit()
+                    quit()
+            config.gameDisplay.fill(config.board_color)
+            # new_game_button = Button("NEW GAME", 800, 500, 150, 50, config.white, config.dark_red, self.new_game)
+            # new_game_button.intro_button()
+            quit_button = Button("QUIT GAME", 1000, 500, 150, 50, config.white, config.dark_red, self.quit_game)
+            # quit_button.intro_button()
+
+            self.show_dealers_hand()
+            self.show_players_hand()
+            self.show_results(self.result)
+            pygame.display.update()
+
+
     def show_dealers_hand(self):
         k = 1
-        for i in range(len(self.dealers_hand)):
+        dealers_hand = self.model.get_dealers_hand()
+        for i in range(len(dealers_hand)):
             right = 500
             down = 0
-            card = pygame.image.load(str(self.dealers_hand[i].get_filename()))
+            card = pygame.image.load(str(dealers_hand[i].get_filename()))
             config.gameDisplay.blit(card, (right + k, down))
             k += 100
-            # pygame.display.flip()
 
     def show_players_hand(self):
         k = 1
-        for i in range(len(self.players_hand)):
+        players_hand = self.model.get_players_hand()
+        for i in range(len(players_hand)):
             right = 500
             down = 400
-            card = pygame.image.load(str(self.players_hand[i].get_filename()))
+            card = pygame.image.load(str(players_hand[i].get_filename()))
             config.gameDisplay.blit(card, (right + k, down))
             k += 100
-            # pygame.display.flip()
+
+    def hit(self):
+        (card, score) = self.model.hit_player()
+        if score >= 21:
+           self.stand()
+        # self.stand()
+
+    def stand(self):
+        self.result = self.model.hit_dealer()
+        self.show_dealers_hand()
+        config.game_exit = True
+
+    # def new_game(self):
+    #     config.crashed = True
+    #     self.__init__()
+
+    def show_results(self, result):
+        self.user_display(self, result)
+
+    def quit_game(self):
+        pygame.quit()
+        quit()

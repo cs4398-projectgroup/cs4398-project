@@ -59,4 +59,3 @@ class Button:
         text_surf, text_ellip = self.text_objects(self.msg, button_text)
         text_ellip.center = ((self.x + (self.w/2)), (self.y + (self.h/2)))
         config.gameDisplay.blit(text_surf, text_ellip)
-

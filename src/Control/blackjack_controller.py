@@ -26,20 +26,20 @@ class BlackjackController(object):
         card = self.currentDeck.deal()
         card.turn()
         self.currentPlayer.hit(card)
-        return card, self.currentPlayer.get_score()
+        # Returns tuple of the card and total points
+        return (card, self.currentPlayer.get_score())
 
     def hit_dealer(self):
         """Dealer only hits after the player stands"""
-        player_score = self.currentPlayer.get_score()
         self.currentDealer.show_first_card()
-
+        player_score = self.currentPlayer.get_score()
         if player_score > 21:
             return "You bust and lose!"
         else:
             self.currentDealer.hit(self.currentDeck)
             dealer_score = self.currentDealer.get_score()
             if dealer_score > 21:
-                return "Dealer goes bust! You win!"
+                return "Dealer busts! You win!"
             elif player_score > dealer_score:
                 return "You win!"
             elif player_score < dealer_score:
