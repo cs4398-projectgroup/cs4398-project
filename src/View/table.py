@@ -88,16 +88,16 @@ class Table:
                     pygame.quit()
                     quit()
             config.gameDisplay.fill(config.board_color)
-            # new_game_button = Button("NEW GAME", 800, 500, 150, 50, config.white, config.dark_red, self.new_game)
-            # new_game_button.intro_button()
+            new_game_button = Button("NEW GAME", 800, 500, 150, 50, config.white, config.dark_red)
+            new_game_button.intro_button()
             quit_button = Button("QUIT GAME", 1000, 500, 150, 50, config.white, config.dark_red, self.quit_game)
-            # quit_button.intro_button()
+            quit_button.intro_button()
 
             self.show_dealers_hand()
             self.show_players_hand()
             self.show_results(self.result)
             pygame.display.update()
-
+            config.clock.tick(30)
 
     def show_dealers_hand(self):
         k = 1
