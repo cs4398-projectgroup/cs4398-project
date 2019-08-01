@@ -34,11 +34,11 @@ class Menu:
             config.gameDisplay.blit(text_surf, text_rect)
 
             button1 = Button(
-                "PLAY", 550, 350, 100, 50, config.white, config.dark_red, self.game_loop
+                "PLAY", 550, 350, 100, 50, config.rose_white, config.dark_red, self.game_loop
             )
             button1.intro_button()
             button2 = Button(
-                "QUIT", 550, 425, 100, 50, config.white, config.dark_red, self.quit_game
+                "QUIT", 550, 425, 100, 50, config.rose_white, config.dark_red, self.quit_game
             )
             button2.intro_button()
 

@@ -49,11 +49,11 @@ class BlackjackController(object):
                     self.currentPlayer.has_blackjack()
                     and not self.currentDealer.has_blackjack()
                 ):
-                    return "You have a BlackJack! You Win!"
+                    return "BlackJack! You Win!"
                 elif (
                     not self.currentPlayer.has_blackjack()
                     and self.currentDealer.has_blackjack()
                 ):
-                    return "Dealer has a BlackJack! You Lose!"
+                    return "Dealer has BlackJack! You Lose!"
                 else:
                     return "It's a Tie!"

@@ -9,15 +9,20 @@ game_exit = False
 menu = False
 
 # colors
-board_color = (255, 60, 90)
+# board_color = (255, 60, 90)
+board_color = (23, 79, 7)
 black = (0, 0, 0)
 white = (255, 255, 255)
+rose_white = (235, 131, 131)
 red = (255, 0, 0)
-dark_red = (200, 0, 0)
+dark_red = (194, 35, 35)
 green = (0, 255, 0)
 dark_green = (0, 200, 0)
 blue = (0, 0, 255)
 dark_blue = (0, 0, 200)
+light_gray = (159, 180, 194)
+gold = (201, 173, 24)
+light_gold = (237, 214, 97)
 
 # display dimensions
 disp_width = 1200

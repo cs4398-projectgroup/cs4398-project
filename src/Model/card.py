@@ -6,7 +6,7 @@ class Card:
     SUITS = ('Spades', 'Hearts', 'Diamonds', 'Clubs')
     RANKS = (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13)
     THIS_FOLDER = os.path.dirname(os.path.abspath(__file__))
-    BACK_OF_CARD_FILE_NAME = os.path.join(THIS_FOLDER, 'DECK/b.gif')
+    BACK_OF_CARD_FILE_NAME = os.path.join(THIS_FOLDER, 'DECK/b.png')
 
 
     def __init__(self, rank, suit):

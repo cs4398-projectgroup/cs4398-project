@@ -10,17 +10,7 @@ from View.menu import Menu
 class Table:
     def __init__(self):
         self.model = BlackjackController()
-        # self.dealers_hand = self.model.get_dealers_hand()
-        # self.players_hand = self.model.get_players_hand()
-        self.result = ''
-
-    #@staticmethod
-    #def display_card(x, y):
-     #   config.gameDisplay.blit(config.demo_images[1][0], (x, y))
-    # displays elf
-    @staticmethod
-    def elf(x, y):
-        config.gameDisplay.blit(config.demo_images[2][0], (x, y))
+        self.result_msg = ''
 
     @staticmethod
     def text_objects(text, font):
@@ -40,9 +30,9 @@ class Table:
     def game_loop(self):
         x = config.disp_width * 0.4
         y = config.disp_height * 0.6
-        left_key = False
         config.crashed = False
         config.game_exit = False
+
         # Sound Effect of Dealing 4 cards
         sound = Sound()
         sound.get_sound_effect("Deal4")
@@ -52,7 +42,6 @@ class Table:
         self.show_dealers_hand()
         # self.show_players_hand()
 
-        print("Game while loop Enter")
         while not config.game_exit:
             # event loop / NOT logic loop
             # creates a list of events per frame per second (mouse movement/clicks etc)
@@ -62,41 +51,39 @@ class Table:
                     config.crashed = True
                     pygame.quit()
                     quit()
-                if event.type == pygame.KEYDOWN:
-                    if event.key == pygame.K_LEFT:
-                        left_key = True
-
-            # Background Color
-            # config.gameDisplay.fill(config.board_color)
+                if event.type == pygame.MOUSEBUTTONDOWN:
+                    # buttons for hit,stand,new game, and quit game
+                    hit_button = Button("HIT ME", 100, 500, 100, 50, config.rose_white, config.dark_red, self.hit)
+                    hit_button.intro_button()
+                    stand_button = Button("STAND", 300, 500, 100, 50, config.rose_white, config.dark_red, self.stand)
+                    stand_button.intro_button()
+                    new_game_button = Button("NEW GAME", 800, 500, 150, 50, config.rose_white, config.dark_red,
+                                             self.new_game)
+                    new_game_button.intro_button()
+                    quit_button = Button("QUIT GAME", 1000, 500, 150, 50, config.rose_white, config.dark_red, self.quit_game)
+                    quit_button.intro_button()
 
             # buttons for hit,stand,new game, and quit game
-            hit_button = Button("HIT ME", 100, 500, 100, 50, config.green, config.dark_green, self.hit)
-            hit_button.game_button()
-            stand_button = Button("STAND", 300, 500, 100, 50, config.green, config.dark_green, self.stand)
-            stand_button.game_button()
-            new_game_button = Button("NEW GAME", 800, 500, 150, 50, config.white, config.dark_red, self.new_game)
+            hit_button = Button("HIT ME", 100, 500, 100, 50, config.light_gold, config.gold)
+            hit_button.intro_button()
+            stand_button = Button("STAND", 300, 500, 100, 50, config.light_gold, config.gold)
+            stand_button.intro_button()
+            new_game_button = Button("NEW GAME", 800, 500, 150, 50, config.light_gold, config.gold)
             new_game_button.intro_button()
-            quit_button = Button("QUIT GAME", 1000, 500, 150, 50, config.white, config.dark_red, self.quit_game)
+            quit_button = Button("QUIT GAME", 1000, 500, 150, 50, config.light_gold, config.gold)
             quit_button.intro_button()
 
-            mouse = pygame.mouse.get_pressed()
-            print(mouse)
-            # allows to specific paramameter to update or the entire window if blank
-            # pygame.display.flip() always just updates the entire surface
-            #self.show_dealers_hand()
             self.show_players_hand()
             pygame.display.update()
             config.clock.tick(30)
             left_key = False
 
-        print("Game while loop Exit")
         self.end_of_game()
 
     def end_of_game(self):
         self.show_dealers_hand()
         self.show_players_hand()
-        self.show_results(self.result)
-        print("End_of_game while loop Enter")
+        self.show_results(self.result_msg)
         while not config.crashed:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
@@ -104,23 +91,26 @@ class Table:
                     config.crashed = True
                     pygame.quit()
                     quit()
+                if event.type == pygame.MOUSEBUTTONDOWN:
+                    new_game_button2 = Button("NEW GAME", 800, 500, 150, 50, config.light_gold, config.gold,
+                                              self.new_game)
+                    new_game_button2.intro_button()
+                    quit_button2 = Button("QUIT GAME", 1000, 500, 150, 50, config.light_gold, config.gold,
+                                          self.quit_game)
+                    quit_button2.intro_button()
             #config.gameDisplay.fill(config.board_color)
-            hit_button = Button("HIT ME", 100, 500, 100, 50, config.white, config.white)
-            hit_button.game_button()
-            stand_button = Button("STAND", 300, 500, 100, 50, config.white, config.white)
-            stand_button.game_button()
-            new_game_button2 = Button("NEW GAME", 800, 500, 150, 50, config.white, config.dark_red, self.new_game)
+            hit_button = Button("", 100, 500, 100, 50, config.board_color, config.board_color)
+            hit_button.intro_button()
+            stand_button = Button("", 300, 500, 100, 50, config.board_color, config.board_color)
+            stand_button.intro_button()
+            new_game_button2 = Button("NEW GAME", 800, 500, 150, 50, config.light_gold, config.gold)
             new_game_button2.intro_button()
-            quit_button2 = Button("QUIT GAME", 1000, 500, 150, 50, config.white, config.dark_red, self.quit_game)
+            quit_button2 = Button("QUIT GAME", 1000, 500, 150, 50, config.light_gold, config.gold)
             quit_button2.intro_button()
-
-            mouse = pygame.mouse.get_pressed()
-            print(mouse)
 
             pygame.display.update()
             config.clock.tick(30)
         config.crashed = True
-        print("End_of_game while loop Exit")
 
     def new_game(self):
         config.crashed = True
@@ -153,17 +143,14 @@ class Table:
         (card, score) = self.model.hit_player()
         if score >= 21:
            self.stand()
-        # self.stand()
-        print("Player hits")
 
     def stand(self):
-        self.result = self.model.hit_dealer()
+        self.result_msg = self.model.hit_dealer()
         self.show_dealers_hand()
         config.game_exit = True
-        print("Player stands")
 
-    def show_results(self, result):
-        self.user_display(self, result)
+    def show_results(self, result_msg):
+        self.user_display(self, result_msg)
 
     def quit_game(self):
         pygame.quit()
