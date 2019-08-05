@@ -40,4 +40,9 @@ class Player(object):
     def get_hand(self):
         return self.hand
 
+    def new_hand(self, cards):
+        self.hand = cards
+        for c in self.hand:
+            c.turn()
+
 

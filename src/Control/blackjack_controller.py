@@ -18,16 +18,22 @@ class BlackjackController(object):
         """Returns player's hand"""
         return self.currentPlayer.get_hand()
 
+    def get_new_player_hand(self):
+        self.currentPlayer.new_hand([self.currentDeck.deal(), self.currentDeck.deal()])
+
     def get_dealers_hand(self):
         """Returns dealer's hand"""
         return self.currentDealer.get_hand()
+
+    def get_new_dealer_hand(self):
+        self.currentDealer.new_hand([self.currentDeck.deal(), self.currentDeck.deal()])
 
     def hit_player(self):
         card = self.currentDeck.deal()
         card.turn()
         self.currentPlayer.hit(card)
         # Returns tuple of the card and total points
-        return (card, self.currentPlayer.get_score())
+        return card, self.currentPlayer.get_score()
 
     def hit_dealer(self):
         """Dealer only hits after the player stands"""
