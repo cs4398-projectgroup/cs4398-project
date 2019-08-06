@@ -35,5 +35,5 @@ class MetaView:
             self.controller.get_new_dealer_hand()
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     MetaView().meta_loop()

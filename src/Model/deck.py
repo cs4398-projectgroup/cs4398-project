@@ -3,7 +3,6 @@ import random
 
 
 class Deck(object):
-
     def __init__(self):
         """Creates a full deck of cards. suits * rank = 52"""
         self.deck = []
@@ -23,9 +22,9 @@ class Deck(object):
 
     def __str__(self):
         """Returns the string representation of the deck"""
-        self.cards_in_the_deck = ''
+        self.cards_in_the_deck = ""
         for card in self.deck:
-            self.cards_in_the_deck = self.cards_in_the_deck + str(card) + '\n'
+            self.cards_in_the_deck = self.cards_in_the_deck + str(card) + "\n"
         return self.cards_in_the_deck
 
     def __len__(self):

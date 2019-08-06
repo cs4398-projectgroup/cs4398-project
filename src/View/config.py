@@ -1,6 +1,7 @@
 import pygame
 import platform
 import os
+
 # import re
 #  File Configurations including Globals
 
@@ -33,7 +34,7 @@ disp_height = 600
 pygame.init()
 small_text = pygame.font.Font("freesansbold.ttf", 20)
 gameDisplay = pygame.display.set_mode((disp_width, disp_height))
-pygame.display.set_caption('BlackJackTrainerAlfa')
+pygame.display.set_caption("BlackJackTrainerAlfa")
 clock = pygame.time.Clock()
 
 
@@ -44,20 +45,28 @@ clock = pygame.time.Clock()
 custom_cards = []
 card_images = []
 
-if platform.system() == 'Windows':
+if platform.system() == "Windows":
     path = os.getcwd() + r"\images\custom_cards"
     for image in os.listdir(path):
-        custom_cards.append([pygame.image.load(path + '/' + image).convert_alpha(), image.strip(".gif")])
+        custom_cards.append(
+            [pygame.image.load(path + "/" + image).convert_alpha(), image.strip(".gif")]
+        )
     path = os.getcwd() + r"\rimages\card_images"
     for image in os.listdir(path):
-        card_images.append([pygame.image.load(path + '/' + image).convert_alpha(), image.strip(".gif")])
+        card_images.append(
+            [pygame.image.load(path + "/" + image).convert_alpha(), image.strip(".gif")]
+        )
 else:
     path = os.getcwd() + "/images/custom_cards"
     for image in os.listdir(path):
-        custom_cards.append([pygame.image.load(path + '/' + image).convert_alpha(), image.strip(".gif")])
+        custom_cards.append(
+            [pygame.image.load(path + "/" + image).convert_alpha(), image.strip(".gif")]
+        )
     path = os.getcwd() + "/images/card_images"
     for image in os.listdir(path):
-        card_images.append([pygame.image.load(path + '/' + image).convert_alpha(), image.strip(".gif")])
+        card_images.append(
+            [pygame.image.load(path + "/" + image).convert_alpha(), image.strip(".gif")]
+        )
 
 # bubble sort to sort card_images card name number value
 # for j in range(0, 51):

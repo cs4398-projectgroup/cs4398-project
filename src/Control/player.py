@@ -44,5 +44,3 @@ class Player(object):
         self.hand = cards
         for c in self.hand:
             c.turn()
-
-

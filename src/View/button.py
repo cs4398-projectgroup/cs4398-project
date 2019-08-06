@@ -50,15 +50,19 @@ class Button:
     def game_button(self):
         mouse = pygame.mouse.get_pos()
         click = pygame.mouse.get_pressed()
-        if self.x + self.w > mouse[0] > self.x and self.y +self.h >mouse[1] > self.y:
-            pygame.draw.ellipse(config.gameDisplay, self.ac, (self.x,self.y,self.w,self.h))
-            if click[0] ==1 and self.action:
+        if self.x + self.w > mouse[0] > self.x and self.y + self.h > mouse[1] > self.y:
+            pygame.draw.ellipse(
+                config.gameDisplay, self.ac, (self.x, self.y, self.w, self.h)
+            )
+            if click[0] == 1 and self.action:
                 self.action()
         else:
-            pygame.draw.ellipse(config.gameDisplay, self.ic, (self.x,self.y,self.w,self.h))
-        button_text= pygame.font.SysFont('comicsans', 20)
+            pygame.draw.ellipse(
+                config.gameDisplay, self.ic, (self.x, self.y, self.w, self.h)
+            )
+        button_text = pygame.font.SysFont("comicsans", 20)
         text_surf, text_ellip = self.text_objects(self.msg, button_text)
-        text_ellip.center = ((self.x + (self.w/2)), (self.y + (self.h/2)))
+        text_ellip.center = ((self.x + (self.w / 2)), (self.y + (self.h / 2)))
         config.gameDisplay.blit(text_surf, text_ellip)
 
     # button functionality with message, coordinates, width/height, active/inactive color
