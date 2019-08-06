@@ -1,8 +1,10 @@
 # from deck import Deck
 
-class Dealer():
+
+class Dealer:
     foo = "foo"
     print(foo)
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     Dealer()

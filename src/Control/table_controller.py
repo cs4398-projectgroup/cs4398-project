@@ -18,6 +18,7 @@ class BlackjackTableController(TableController):
             Raises:
                 KeyError: exceptions it raises
         """
+
     def __init__(self):
         self.create_table()
 

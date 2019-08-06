@@ -38,5 +38,5 @@ class MetaView:
             config.end_shoe = self.controller.get_if_shoe_end()
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     MetaView().meta_loop()

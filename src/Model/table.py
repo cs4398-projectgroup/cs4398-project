@@ -20,6 +20,7 @@ class BlackjackTable(Table):
         Raises:
             KeyError: exceptions it raises
     """
+
     def __init__(self):
         self.player = BlackjackPlayer
         self.house = BlackjackHand

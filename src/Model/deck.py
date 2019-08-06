@@ -34,9 +34,9 @@ class Deck(object):
 
     def __str__(self):
         """Returns the string representation of the deck"""
-        self.cards_in_the_deck = ''
+        self.cards_in_the_deck = ""
         for card in self.deck:
-            self.cards_in_the_deck = self.cards_in_the_deck + str(card) + '\n'
+            self.cards_in_the_deck = self.cards_in_the_deck + str(card) + "\n"
         return self.cards_in_the_deck
 
     def __len__(self):

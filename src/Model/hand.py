@@ -24,6 +24,7 @@ class BlackjackHand(Hand):
         _cards: list BlackjackCard
         name: str
     """
+
     def __init__(self, name="", *cards):
         super().__init__(name, *cards)
 

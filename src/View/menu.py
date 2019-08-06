@@ -34,11 +34,15 @@ class Menu:
             text_rect.center = ((config.disp_width / 2), (config.disp_height / 2.2))
             config.gameDisplay.blit(text_surf, text_rect)
 
-            play_button = Button("PLAY", 550, 350, 100, 50, config.rose_white, config.dark_red)
+            play_button = Button(
+                "PLAY", 550, 350, 100, 50, config.rose_white, config.dark_red
+            )
             play_button.bool_button()
             self.game_loop = play_button.return_boolean()
 
-            quit_button = Button("QUIT", 550, 425, 100, 50, config.rose_white, config.dark_red)
+            quit_button = Button(
+                "QUIT", 550, 425, 100, 50, config.rose_white, config.dark_red
+            )
             quit_button.bool_button()
             self.quit_game = quit_button.return_boolean()
 

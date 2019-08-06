@@ -14,6 +14,7 @@ class Player:
     Raises:
         KeyError: exceptions it raises
     """
+
     pass
 
 
@@ -36,7 +37,7 @@ class BlackjackPlayer(Player):
 
     def ask_to_hit(self) -> bool:
         answer = input("Hit? (Y/N): ")
-        if answer == 'Y' or 'y':
+        if answer == "Y" or "y":
             return True
         else:
             return False
@@ -64,4 +65,3 @@ class BlackjackHouse(Player):
             return True
         else:
             return False
-
