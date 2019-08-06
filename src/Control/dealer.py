@@ -3,7 +3,6 @@ from Control.player import Player
 
 class Dealer(Player):
     def __init__(self, cards):
-        # this seems weird to me, will look into later (nhh)
         Player.__init__(self, cards)
         self.show_one_card = True
         self.hand[0].turn()
@@ -28,6 +27,4 @@ class Dealer(Player):
             return Player.__str__(self)
 
     def new_hand(self, cards):
-        self.hand = cards
-        for c in self.hand:
-            c.turn()
+        self.__init__(cards)

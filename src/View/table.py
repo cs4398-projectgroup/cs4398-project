@@ -27,6 +27,10 @@ class Table:
         # self.show_players_hand()
 
         while self.loop_1:
+            # checks to see if deck is empty
+            if config.end_shoe is True:
+                self.end_of_shoe()
+
             # event loop / NOT logic loop
             # creates a list of events per frame per second (mouse movement/clicks etc)
             for event in pygame.event.get():
@@ -42,7 +46,6 @@ class Table:
                     stand_button.bool_button()
                     if stand_button.return_boolean():
                         self.stand()
-                        self.loop_1 = False
                     # buttons that return a boolean for new game and quit game
                     new_game_button = Button("NEW GAME", 800, 500, 150, 50, config.rose_white, config.dark_red)
                     new_game_button.bool_button()
@@ -129,12 +132,14 @@ class Table:
         # starts game loop over and resets
         time.sleep(1)
 
-    # def new_game(self):
-    #     config.crashed = True
-    #     config.game_exit = True
-    #     new_start = Table().game_loop
-    #     menu_start = Menu(new_start, self.quit_game)
-    #     menu_start.game_menu()
+    def end_of_shoe(self):
+        text = "End of Shoe, New Deck after re-deal"
+        medium_text = pygame.font.Font("freesansbold.ttf", 50)
+        text_surf, text_rect = self.text_objects(text, medium_text)
+        text_rect.center = ((config.disp_width/2), (config.disp_height/3.5))
+        config.gameDisplay.blit(text_surf, text_rect)
+        pygame.display.update()
+        # starts game loop over and resets
 
     def show_dealers_hand(self):
         k = 1
@@ -165,10 +170,8 @@ class Table:
         self.result_msg = self.control.hit_dealer()
         self.show_dealers_hand()
         config.hand_loop = False
+        self.loop_1 = False
 
     def show_results(self, result_msg):
         self.user_display(self, result_msg)
 
-    # def quit_game(self):
-    #     pygame.quit()
-    #     quit()

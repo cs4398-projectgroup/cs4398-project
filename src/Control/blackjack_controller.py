@@ -28,6 +28,13 @@ class BlackjackController(object):
     def get_new_dealer_hand(self):
         self.currentDealer.new_hand([self.currentDeck.deal(), self.currentDeck.deal()])
 
+    def get_if_shoe_end(self):
+        """Returns bool true if shoe card cut is drawn"""
+        if self.currentDeck.get_deck_size() < self.currentDeck.get_end_of_shoe():
+            return True
+        else:
+            return False
+
     def hit_player(self):
         card = self.currentDeck.deal()
         card.turn()

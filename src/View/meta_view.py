@@ -19,20 +19,23 @@ class MetaView:
     def meta_loop(self):
         config.game_exit = Menu().game_menu()
         while not config.game_exit:
-            config.new_game = False
             self.new_table.player_hand_loop()
             if config.new_game:
                 self.controller = BlackjackController()
                 self.new_table = Table(self.controller)
+                config.new_game = False
             elif config.game_exit:
                 break
             else:
                 self.new_table.end_of_hand()
-                if config.new_game:
+                if config.new_game or config.end_shoe:
                     self.controller = BlackjackController()
                     self.new_table = Table(self.controller)
-            self.controller.get_new_player_hand()
-            self.controller.get_new_dealer_hand()
+                    config.new_game = False
+                else:
+                    self.controller.get_new_player_hand()
+                    self.controller.get_new_dealer_hand()
+            config.end_shoe = self.controller.get_if_shoe_end()
 
 
 if __name__ == '__main__':

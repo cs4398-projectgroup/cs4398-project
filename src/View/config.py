@@ -8,6 +8,8 @@ import os
 new_game = False
 game_exit = False
 menu = False
+end_shoe = False
+end_shoe_warn = False
 crashed = False
 # colors
 # board_color = (255, 60, 90)
