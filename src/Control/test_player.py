@@ -20,7 +20,7 @@ class PlayerTest(unittest.TestCase):
 
     def test_player_hand_str(self):
         print(self.test_player.__str__())
-
+    #
     def test_player_hand_score(self):
         self.assertTrue(self.test_player.get_score() > 0)
         self.assertTrue(self.test_player.get_score() <= 21)
