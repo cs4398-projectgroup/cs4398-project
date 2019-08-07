@@ -229,8 +229,8 @@ class Table:
         self.user_display(self, result_msg)
 
     def show_balance(self, balance):
-        mid_text = pygame.font.Font("freesansbold.ttf", 40)
-        text_surf, text_rect = self.text_objects("Bal: " + balance, mid_text)
+        mid_text = pygame.font.Font("freesansbold.ttf", 30)
+        text_surf, text_rect = self.text_objects("Balance: $" + balance, mid_text)
         # text_rect.top = (0, 0)
         config.gameDisplay.blit(text_surf, text_rect)
         pygame.display.update()
