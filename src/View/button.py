@@ -1,5 +1,5 @@
 import pygame
-from View import config
+from Control import config
 
 
 class Button:

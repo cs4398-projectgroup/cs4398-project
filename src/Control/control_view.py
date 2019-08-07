@@ -1,7 +1,7 @@
 import pygame
 from View.menu import Menu
 from View.table import Table
-from View import config
+from Control import config
 from Control.blackjack_controller import BlackjackController
 
 
