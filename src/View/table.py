@@ -105,6 +105,11 @@ class Table:
             quit_button.intro_button()
 
             self.show_players_hand()
+            if self.control.starting_blackjack:
+                self.result_msg = "Blackjack! You Win!"
+                self.show_results(self.result_msg)
+                self.control.starting_blackjack = False
+                self.loop_1 = False
             pygame.display.update()
             config.clock.tick(15)
         self.loop_1 = True

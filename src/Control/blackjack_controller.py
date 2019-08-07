@@ -1,3 +1,4 @@
+from Control import config
 from Model.deck import Deck
 from Control.dealer import Dealer
 from Control.player import Player
@@ -12,10 +13,20 @@ class BlackjackController(object):
         self.bet_amount = 100
         self.win = False
         self.default_balance = 10000
+        self.starting_blackjack = False
 
         """Deal player and dealer 2 cards each"""
         self.currentPlayer = Player([self.currentDeck.deal(), self.currentDeck.deal()], self.default_balance)
         self.currentDealer = Dealer([self.currentDeck.deal(), self.currentDeck.deal()], self.default_balance)
+        
+        if self.currentPlayer.has_blackjack():
+            self.win = True
+            self.currentPlayer.update_balance(self.bet_amount, self.win)
+            self.starting_blackjack = True
+        # Fif self.currentPlayer.has_blackjack:
+        #     self.win = True
+        #     self.currentPlayer.update_balance(self.bet_amount, self.win)
+        #     self.player_wins()
 
     def get_players_balance(self):
         return self.currentPlayer.get_balance()
@@ -23,6 +34,9 @@ class BlackjackController(object):
     def get_players_hand(self):
         """Returns player's hand"""
         return self.currentPlayer.get_hand()
+
+    def get_blackjack(self):
+        return self.starting_blackjack
 
     def get_new_player_hand(self):
         self.currentPlayer.new_hand([self.currentDeck.deal(), self.currentDeck.deal()])
@@ -59,6 +73,12 @@ class BlackjackController(object):
         else:
             self.currentDealer.hit(self.currentDeck)
             dealer_score = self.currentDealer.get_score()
+            if player_score != dealer_score and self.currentPlayer.has_blackjack():
+                # If the player has blackjack and it isn't a tie
+                self.win = True
+                self.currentPlayer.update_balance(self.bet_amount, self.win)
+                config.blackjack = True
+                return "Blackjack! You Win!"
             if dealer_score > 21:
                 self.win = True
                 self.currentPlayer.update_balance(self.bet_amount, self.win)
@@ -78,6 +98,7 @@ class BlackjackController(object):
                 ):
                     self.win = True
                     self.currentPlayer.update_balance(self.bet_amount, self.win)
+                    blackjack = True
                     return "BlackJack! You Win!"
                 elif (
                     not self.currentPlayer.has_blackjack()
@@ -88,3 +109,5 @@ class BlackjackController(object):
                     return "Dealer has BlackJack! You Lose!"
                 else:
                     return "It's a Tie!"
+
+

@@ -1,6 +1,6 @@
-import pygame
 import platform
 import os
+import pygame
 
 # import re
 #  File Configurations including Globals
@@ -12,6 +12,7 @@ menu = False
 end_shoe = False
 end_shoe_warn = False
 crashed = False
+blackjack = False
 # colors
 # board_color = (255, 60, 90)
 board_color = (23, 79, 7)
@@ -45,9 +46,10 @@ clock = pygame.time.Clock()
 # card_images: open source cards
 # 2d list with two variables, pygame image and image name
 custom_cards = []
-#card_images = []
+# card_images = []
 
 if platform.system() == "Windows":
+    # os.chdir(r"C:\Users\Trevor\PythonProjects\Blackjack-Project\src\View")
     path = os.getcwd() + r"\images\custom_cards"
     for image in os.listdir(path):
         custom_cards.append(
@@ -60,6 +62,7 @@ if platform.system() == "Windows":
     #     )
 else:
     path = os.getcwd() + "/images/custom_cards"
+    os.chdir(r"C:\Users\Trevor\PythonProjects\Blackjack-Project\src\View")
     for image in os.listdir(path):
         custom_cards.append(
             [pygame.image.load(path + "/" + image).convert_alpha(), image.strip(".gif")]
