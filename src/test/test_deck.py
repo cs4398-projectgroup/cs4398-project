@@ -5,18 +5,23 @@ from Model.deck import Deck
 
 class DeckTest(unittest.TestCase):
     def setUp(self):
-        self.deck = Deck()
+        self.Deck = Deck()
+        self.EmptyDeck = Deck()
+        self.EmptyDeck.deck = []
 
     def test_number_of_cards(self):
-        self.assertEqual(self.deck.get_deck_size(), 52)
+        self.assertEqual(self.Deck.get_deck_size(), 312)
 
-    # def test_draw_deck(self):
-    #     self.deck.draw()
-    #     self.assertEqual(len(self.deck._cards), 51)
-    #
-    # def test_draw_card(self):
-    #     test_card = self.deck.draw()
-    #     self.assertNotIn(test_card, [c for c in self.deck._cards])
+    @unittest.expectedFailure
+    def test_not_equal_cards(self):
+        self.assertEqual(self.Deck.get_deck_size(), 52)
+
+    # tests deal function
+    def test_end_of_deck(self):
+        # Empty python lists eval to False
+        while self.Deck.deck:
+            self.Deck.deal()
+        self.assertFalse(self.Deck.deck)
 
 
 if __name__ == "__main__":
