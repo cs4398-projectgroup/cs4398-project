@@ -1,10 +1,9 @@
 # displays main game board
 import pygame
 import time
-from View import config
+from Control import config
 from View.soundeffects import Sound
 from View.button import Button
-from View.menu import Menu
 
 
 class Table:
@@ -187,7 +186,7 @@ class Table:
         text = "End of Shoe, New Deck after re-deal"
         medium_text = pygame.font.Font("freesansbold.ttf", 50)
         text_surf, text_rect = self.text_objects(text, medium_text)
-        text_rect.center = ((config.disp_width/2), (config.disp_height/3.5))
+        text_rect.center = ((config.disp_width / 2), (config.disp_height / 3.5))
         config.gameDisplay.blit(text_surf, text_rect)
         pygame.display.update()
         # starts game loop over and resets
