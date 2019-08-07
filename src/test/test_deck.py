@@ -3,7 +3,7 @@ import unittest
 from Model.deck import Deck
 
 
-class DeckTest(unittest.TestCase):
+class TestDeck(unittest.TestCase):
     def setUp(self):
         self.Deck = Deck()
         self.EmptyDeck = Deck()

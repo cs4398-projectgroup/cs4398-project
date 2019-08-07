@@ -36,7 +36,7 @@ class Menu:
 
             play_button = Button(
                 "PLAY", 550, 350, 100, 50, config.rose_white, config.dark_red
-            )
+
             play_button.bool_button()
             self.game_loop = play_button.return_boolean()
 
