@@ -9,10 +9,16 @@ class BlackjackController(object):
     def __init__(self):
         self.currentDeck = Deck()
         self.currentDeck.shuffle()
+        self.bet_amount = 100
+        self.win = False
+        self.default_balance = 10000
 
         """Deal player and dealer 2 cards each"""
-        self.currentPlayer = Player([self.currentDeck.deal(), self.currentDeck.deal()])
-        self.currentDealer = Dealer([self.currentDeck.deal(), self.currentDeck.deal()])
+        self.currentPlayer = Player([self.currentDeck.deal(), self.currentDeck.deal()], self.default_balance)
+        self.currentDealer = Dealer([self.currentDeck.deal(), self.currentDeck.deal()], self.default_balance)
+
+    def get_players_balance(self):
+        return self.currentPlayer.get_balance()
 
     def get_players_hand(self):
         """Returns player's hand"""
@@ -47,26 +53,38 @@ class BlackjackController(object):
         self.currentDealer.show_first_card()
         player_score = self.currentPlayer.get_score()
         if player_score > 21:
+            self.win = False
+            self.currentPlayer.update_balance(self.bet_amount, self.win)
             return "You bust and lose!"
         else:
             self.currentDealer.hit(self.currentDeck)
             dealer_score = self.currentDealer.get_score()
             if dealer_score > 21:
+                self.win = True
+                self.currentPlayer.update_balance(self.bet_amount, self.win)
                 return "Dealer busts! You win!"
             elif player_score > dealer_score:
+                self.win = True
+                self.currentPlayer.update_balance(self.bet_amount, self.win)
                 return "You win!"
             elif player_score < dealer_score:
+                self.win = False
+                self.currentPlayer.update_balance(self.bet_amount, self.win)
                 return "You lose!"
             elif player_score == dealer_score:
                 if (
                     self.currentPlayer.has_blackjack()
                     and not self.currentDealer.has_blackjack()
                 ):
+                    self.win = True
+                    self.currentPlayer.update_balance(self.bet_amount, self.win)
                     return "BlackJack! You Win!"
                 elif (
                     not self.currentPlayer.has_blackjack()
                     and self.currentDealer.has_blackjack()
                 ):
+                    self.win = False
+                    self.currentPlayer.update_balance(self.bet_amount, self.win)
                     return "Dealer has BlackJack! You Lose!"
                 else:
                     return "It's a Tie!"

@@ -2,8 +2,8 @@ from Control.player import Player
 
 
 class Dealer(Player):
-    def __init__(self, cards):
-        Player.__init__(self, cards)
+    def __init__(self, cards, balance):
+        Player.__init__(self, cards, balance)
         self.show_one_card = True
         self.hand[0].turn()
 
@@ -27,4 +27,4 @@ class Dealer(Player):
             return Player.__str__(self)
 
     def new_hand(self, cards):
-        self.__init__(cards)
+        self.__init__(cards, self.balance)

@@ -13,6 +13,7 @@ class Table:
         self.loop_1 = True
         self.loop_2 = True
         self.result_msg = ""
+        self.balance = str(self.control.get_players_balance())
 
     # Player Hand Loop sets config.new_game and config.game_exit or goes though hand
     def player_hand_loop(self):
@@ -24,6 +25,7 @@ class Table:
 
         config.gameDisplay.fill(config.board_color)
         self.show_dealers_hand()
+        self.show_balance(str(self.control.get_players_balance()))
         # self.show_players_hand()
 
         while self.loop_1:
@@ -110,6 +112,8 @@ class Table:
 
     # End of Hand
     def end_of_hand(self):
+        config.gameDisplay.fill(config.board_color)
+        self.show_balance(str(self.control.get_players_balance()))
         self.show_dealers_hand()
         self.show_players_hand()
         self.show_results(self.result_msg)
@@ -162,7 +166,6 @@ class Table:
                 "QUIT GAME", 1000, 500, 150, 50, config.light_gold, config.gold
             )
             new_game_button.intro_button()
-
             pygame.display.update()
             config.clock.tick(30)
         # Reset loop
@@ -226,3 +229,10 @@ class Table:
     def show_results(self, result_msg):
         self.user_display(self, result_msg)
 
+    def show_balance(self, balance):
+        mid_text = pygame.font.Font("freesansbold.ttf", 40)
+        text_surf, text_rect = self.text_objects("Bal: " + balance, mid_text)
+        # text_rect.top = (0, 0)
+        config.gameDisplay.blit(text_surf, text_rect)
+        pygame.display.update()
+        # time.sleep(1)

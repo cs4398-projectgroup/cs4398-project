@@ -1,6 +1,7 @@
 class Player(object):
-    def __init__(self, cards):
+    def __init__(self, cards, balance):
         self.hand = cards
+        self.balance = balance
         """Turns each card faceUp"""
         for c in self.hand:
             c.turn()
@@ -14,6 +15,15 @@ class Player(object):
     def hit(self, card):
         """Adds a card to the hand"""
         self.hand.append(card)
+
+    def get_balance(self):
+        return self.balance
+
+    def update_balance(self, bet_amount, win):
+        if win:
+            self.balance = self.balance + bet_amount
+        else:
+            self.balance = self.balance - bet_amount
 
     def get_score(self):
         score = 0
