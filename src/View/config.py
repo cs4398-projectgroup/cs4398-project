@@ -45,7 +45,7 @@ clock = pygame.time.Clock()
 # card_images: open source cards
 # 2d list with two variables, pygame image and image name
 custom_cards = []
-card_images = []
+#card_images = []
 
 if platform.system() == "Windows":
     path = os.getcwd() + r"\images\custom_cards"
@@ -53,22 +53,22 @@ if platform.system() == "Windows":
         custom_cards.append(
             [pygame.image.load(path + "/" + image).convert_alpha(), image.strip(".gif")]
         )
-    path = os.getcwd() + r"\rimages\card_images"
-    for image in os.listdir(path):
-        card_images.append(
-            [pygame.image.load(path + "/" + image).convert_alpha(), image.strip(".gif")]
-        )
+    # path = os.getcwd() + r"\rimages\card_images"
+    # for image in os.listdir(path):
+    #     card_images.append(
+    #         [pygame.image.load(path + "/" + image).convert_alpha(), image.strip(".gif")]
+    #     )
 else:
     path = os.getcwd() + "/images/custom_cards"
     for image in os.listdir(path):
         custom_cards.append(
             [pygame.image.load(path + "/" + image).convert_alpha(), image.strip(".gif")]
         )
-    path = os.getcwd() + "/images/card_images"
-    for image in os.listdir(path):
-        card_images.append(
-            [pygame.image.load(path + "/" + image).convert_alpha(), image.strip(".gif")]
-        )
+    # path = os.getcwd() + "/images/card_images"
+    # for image in os.listdir(path):
+    #     card_images.append(
+    #         [pygame.image.load(path + "/" + image).convert_alpha(), image.strip(".gif")]
+    #     )
 
 # bubble sort to sort card_images card name number value
 # for j in range(0, 51):
