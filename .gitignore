@@ -4,3 +4,4 @@ venv/
 src/Model/DECK/hand.py
 src/test/test_button.py
 src/test/test_hand.py
+/src/test/images/

@@ -1,4 +1,5 @@
 class Player(object):
+
     def __init__(self, cards, balance):
         self.hand = cards
         self.balance = balance

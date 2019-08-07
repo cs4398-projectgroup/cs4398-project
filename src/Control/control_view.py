@@ -3,6 +3,12 @@ from View.menu import Menu
 from View.table import Table
 from Control import config
 from Control.blackjack_controller import BlackjackController
+# from pycallgraph2 import PyCallGraph
+# from pycallgraph2 import Config as graph_config
+# from pycallgraph2.output import GraphvizOutput
+
+# output_config = graph_config(max_depth=7)
+# graphviz = GraphvizOutput(output_file='UML_Diagram.png')
 
 
 class ControlView:
@@ -39,4 +45,5 @@ class ControlView:
 
 
 if __name__ == "__main__":
-    ControlView().meta_loop()
+    # with PyCallGraph(output=graphviz, config=output_config):
+        ControlView().meta_loop()
