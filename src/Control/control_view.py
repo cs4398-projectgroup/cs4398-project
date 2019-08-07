@@ -5,7 +5,7 @@ from Control import config
 from Control.blackjack_controller import BlackjackController
 
 
-class MetaView:
+class ControlView:
     def __init__(self):
         self.controller = BlackjackController()
         self.new_table = Table(self.controller)
@@ -39,4 +39,4 @@ class MetaView:
 
 
 if __name__ == "__main__":
-    MetaView().meta_loop()
+    ControlView().meta_loop()
