@@ -35,8 +35,8 @@ class Menu:
             config.gameDisplay.blit(text_surf, text_rect)
 
             play_button = Button(
-                "PLAY", 550, 350, 100, 50, config.rose_white, config.dark_red
-            )
+                "PLAY", 550, 350, 100, 50, config.rose_white, config.dark_red)
+
             play_button.bool_button()
             self.game_loop = play_button.return_boolean()
 

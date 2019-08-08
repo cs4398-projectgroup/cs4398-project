@@ -50,7 +50,7 @@ custom_cards = []
 
 if platform.system() == "Windows":
     # os.chdir(r"C:\Users\Trevor\PythonProjects\Blackjack-Project\src\View")
-    path = os.getcwd() + r"\images\custom_cards"
+    path = os.getcwd() + r"\Control\images\custom_cards"
     for image in os.listdir(path):
         custom_cards.append(
             [pygame.image.load(path + "/" + image).convert_alpha(), image.strip(".gif")]
@@ -61,7 +61,7 @@ if platform.system() == "Windows":
     #         [pygame.image.load(path + "/" + image).convert_alpha(), image.strip(".gif")]
     #     )
 else:
-    path = os.getcwd() + "/images/custom_cards"
+    path = os.getcwd() + "/Control/images/custom_cards"
     for image in os.listdir(path):
         custom_cards.append(
             [pygame.image.load(path + "/" + image).convert_alpha(), image.strip(".gif")]

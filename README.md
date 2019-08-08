@@ -1,6 +1,14 @@
 # cs4398-project
 CS Project Class Application
 
+To run application go to linux terminal.
+cd into /Blackjack-Project folder
+
+Enter this command in /Blackjack-Project directory
+    $source venv/bin/activate
+Enter this command in the Blackjack-Project/src directory
+    $python __main__.py
+
 ## UML Diagram Images:
 ![Image of Call Diagram](https://github.com/CS4398-SM-Group2/Blackjack-Project/blob/feature/doc/UML_Call_Diagram.png)
 ![Image of Class Diagram](https://github.com/CS4398-SM-Group2/Blackjack-Project/blob/feature/doc/Blackjack_Classes.png)
